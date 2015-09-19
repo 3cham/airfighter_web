@@ -3,7 +3,7 @@ from datetime import datetime
 import json
 
 import redis
-import config
+import configinfo
 
 
 class PubSubModel:
@@ -23,7 +23,7 @@ class PubSubModel:
         initialize the connection to the redis database
         '''
         if self.client is None:
-            self.client = redis.StrictRedis(host=config.host, port=config.port)
+            self.client = redis.StrictRedis(host=configinfo.host, port=configinfo.port)
 
     def get_room(self, sensor_id):
         return self.client.get(sensor_id)
@@ -40,7 +40,7 @@ class PubSubModel:
             "room": self.get_room(event['sensor_id']),
             "state":event['state']
         }
-        self.client.publish(config.event_stream_name, json.dumps(data))
+        self.client.publish(configinfo.event_stream_name, json.dumps(data))
 
     def get_publisher(self):
         return self.client.pubsub()

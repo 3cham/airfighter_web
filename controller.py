@@ -2,7 +2,7 @@
 from flask import Flask, render_template, request
 import flask
 from model import *
-
+import configinfo
 app = Flask(__name__)
 events_model = PubSubModel()
 
@@ -12,9 +12,9 @@ def event_stream():
     :return:
     '''
     pubsub = events_model.get_publisher()
-    pubsub.subscribe("events")
+    pubsub.subscribe(configinfo.event_stream_name)
     for event in pubsub.listen():
-        yield 'data: %s\n\n' % event["data"]
+        yield 'data: %s\n\n' % event[configinfo.data_name]
 
 @app.route('/stream')
 def stream():

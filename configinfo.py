@@ -6,5 +6,5 @@ port = 6379
 # Redis database constants start here
 
 
-event_stream_name = "events"
+event_stream_name = "airfighterevents"
 data_name = "data"
