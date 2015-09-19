@@ -1,8 +1,16 @@
+backports.ssl-match-hostname==3.4.0.2
+crc16==0.1.1
 Flask==0.9
 gevent==1.0.2
 gevent-websocket==0.9.5
 greenlet==0.4.9
 Jinja2==2.8
 MarkupSafe==0.23
+paho-mqtt==1.1
+python-redis==0.0.5
+redis==2.10.3
+requests==2.7.0
+six==1.9.0
 websocket==0.2.1
+websocket-client==0.32.0
 Werkzeug==0.10.4

@@ -121,45 +121,50 @@
     <p id="log"></p>
 
     <script>
-        function draw_circle(centerX, centerY, radius, color) {
+        function draw_circle(centerX, centerY, radius, color, rf, temp) {
             var canvas = document.getElementById('roomplan');
+            canvas.width = canvas.width;
+            doit();
             var ctx = canvas.getContext("2d");
+
             ctx.beginPath();
             ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
             ctx.fillStyle=color;
             ctx.fill();
+            ctx.fillStyle='blue';
+            ctx.fillText("rf: " + rf + ", temperature: " + temp, centerX - 30, centerY);
         }
-        function alert_in_room(room) {
+        function alert_in_room(room, rf, temp) {
             var canvas = document.getElementById('roomplan');
             if (room == "1") {
-                centerX = 0.150 * canvas.width;
-                centerY = 0.600 * canvas.height;
-                draw_circle(centerX, centerY, 50, 'red');
+                centerX = 0.250 * canvas.width;
+                centerY = 0.700 * canvas.height;
+                draw_circle(centerX, centerY, 50, 'red', rf, temp);
             };
             if (room == "2") {
-                centerX = 0.370 * canvas.width;
-                centerY = 0.820 * canvas.height;
-                draw_circle(centerX, centerY, 50, 'red');
+                centerX = 0.070 * canvas.width;
+                centerY = 0.320 * canvas.height;
+                draw_circle(centerX, centerY, 50, 'red', rf, temp);
             };
             if (room == "3") {
                 centerX = 0.510 * canvas.width;
-                centerY = 0.820 * canvas.height;
-                draw_circle(centerX, centerY, 50, 'red');
+                centerY = 0.350 * canvas.height;
+                draw_circle(centerX, centerY, 50, 'red', rf, temp);
             };
             if (room == "4") {
-                centerX = 0.650 * canvas.width;
-                centerY = 0.820 * canvas.height;
-                draw_circle(centerX, centerY, 50, 'red');
+                centerX = 0.410 * canvas.width;
+                centerY = 0.220 * canvas.height;
+                draw_circle(centerX, centerY, 50, 'red', rf, temp);
             };
             if (room == "5") {
                 centerX = 0.790 * canvas.width;
                 centerY = 0.820 * canvas.height;
-                draw_circle(centerX, centerY, 50, 'red');
+                draw_circle(centerX, centerY, 50, 'red', rf, temp);
             };
             if (room == "6") {
                 centerX = 0.930 * canvas.width;
                 centerY = 0.820 * canvas.height;
-                draw_circle(centerX, centerY, 50, 'red');
+                draw_circle(centerX, centerY, 50, 'red', rf, temp);
             };
 
         };
@@ -167,34 +172,34 @@
         function normal_in_room(room) {
             var canvas = document.getElementById('roomplan');
             if (room == "1") {
-                centerX = 0.150 * canvas.width;
-                centerY = 0.600 * canvas.height;
-                draw_circle(centerX, centerY, 51, 'white');
+                centerX = 0.250 * canvas.width;
+                centerY = 0.700 * canvas.height;
+                draw_circle(centerX, centerY, 51, 'white', rf, temp);
             };
             if (room == "2") {
-                centerX = 0.370 * canvas.width;
-                centerY = 0.820 * canvas.height;
-                draw_circle(centerX, centerY, 51, 'white');
+                centerX = 0.070 * canvas.width;
+                centerY = 0.320 * canvas.height;
+                draw_circle(centerX, centerY, 51, 'white', rf, temp);
             };
             if (room == "3") {
                 centerX = 0.510 * canvas.width;
-                centerY = 0.820 * canvas.height;
-                draw_circle(centerX, centerY, 51, 'white');
+                centerY = 0.350 * canvas.height;
+                draw_circle(centerX, centerY, 51, 'white', rf, temp);
             };
             if (room == "4") {
                 centerX = 0.650 * canvas.width;
                 centerY = 0.820 * canvas.height;
-                draw_circle(centerX, centerY, 51, 'white');
+                draw_circle(centerX, centerY, 51, 'white', rf, temp);
             };
             if (room == "5") {
                 centerX = 0.790 * canvas.width;
                 centerY = 0.820 * canvas.height;
-                draw_circle(centerX, centerY, 51, 'white');
+                draw_circle(centerX, centerY, 51, 'white', rf, temp);
             };
             if (room == "6") {
                 centerX = 0.930 * canvas.width;
                 centerY = 0.820 * canvas.height;
-                draw_circle(centerX, centerY, 51, 'white');
+                draw_circle(centerX, centerY, 51, 'white', rf, temp);
             };
         }
     </script>
@@ -208,10 +213,12 @@
         event = JSON.parse(e.data);
         room = event.room;
         state = event.state;
+        rf = event.rf;
+        temp = event.temperature;
         if (state != "OK")
-            alert_in_room(room);
+            alert_in_room(room, rf, temp);
         else
-            normal_in_room(room);
+            normal_in_room(room, rf, temp);
     };
 };
 

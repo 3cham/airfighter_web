@@ -33,12 +33,22 @@ class PubSubModel:
 
     def publish_event(self, event):
         now = datetime.now().replace(microsecond=0).time()
+        # data = {
+        #     "sensor_id":event['sensor_id'],
+        #     "co2_level":event['co2_level'],
+        #     "timestamp":now.__format__("%Y-%m-%d %H:%M:%S"),
+        #     "room": self.get_room(event['sensor_id']),
+        #     "state":event['state']
+        # }
+        state = "OK"
+        if event['C'] > 23:
+            state = "notOK"
         data = {
-            "sensor_id":event['sensor_id'],
-            "co2_level":event['co2_level'],
-            "timestamp":now.__format__("%Y-%m-%d %H:%M:%S"),
+            "sensor_id": event['sensor_id'],
             "room": self.get_room(event['sensor_id']),
-            "state":event['state']
+            "rf": event['rf'],
+            "temperature": event['C'],
+            "state": state
         }
         self.client.publish(configinfo.event_stream_name, json.dumps(data))
 

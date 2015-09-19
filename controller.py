@@ -27,13 +27,13 @@ def stream():
 def insert_event():
     print "pushing data"
     data = json.loads(request.data)
+    print data
     events_model.publish_event(data)
     return "OK"
 
 @app.route('/api/config/room', methods = ["POST"])
 def insert_room():
     print "inserting room"
-    print request.data
     data = json.loads(request.data)
     events_model.set_room(data['sensor_id'], data['room'])
     return "OK"
