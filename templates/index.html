@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="de-DE">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Raumplan</title>
+    <style type="text/css">
+		</style>
+    <script type="text/javascript">
+      function doit() {
+        var canvas = document.getElementById('roomplan');
+        var ctx = canvas.getContext("2d");
+        if (ctx) {
+
+          //
+          ctx.beginPath();
+          ctx.moveTo(0.900*canvas.width, 0.300*canvas.height);
+          ctx.lineTo(0.900*canvas.width, 0.550*canvas.height);
+          ctx.lineTo(1.000*canvas.width, 0.550*canvas.height);
+          ctx.lineTo(1.000*canvas.width, 0.300*canvas.height);
+          ctx.lineTo(0.900*canvas.width, 0.300*canvas.height);
+          ctx.stroke();
+
+          // 4. Büro oben
+          ctx.beginPath();
+          ctx.moveTo(0.730*canvas.width, 0.000*canvas.height);
+          ctx.lineTo(0.730*canvas.width, 0.350*canvas.height);
+          ctx.lineTo(0.840*canvas.width, 0.350*canvas.height);
+          ctx.lineTo(0.840*canvas.width, 0.000*canvas.height);
+          ctx.lineTo(0.730*canvas.width, 0.000*canvas.height);
+          ctx.stroke();
+
+
+          // 3. Büro oben
+          ctx.beginPath();
+          ctx.moveTo(0.620*canvas.width, 0.000*canvas.height);
+          ctx.lineTo(0.620*canvas.width, 0.350*canvas.height);
+          ctx.lineTo(0.730*canvas.width, 0.350*canvas.height);
+          ctx.lineTo(0.730*canvas.width, 0.000*canvas.height);
+          ctx.lineTo(0.620*canvas.width, 0.000*canvas.height);
+          ctx.stroke();
+
+          // 2. Büro oben
+          ctx.beginPath();
+          ctx.moveTo(0.510*canvas.width, 0.000*canvas.height);
+          ctx.lineTo(0.510*canvas.width, 0.350*canvas.height);
+          ctx.lineTo(0.620*canvas.width, 0.350*canvas.height);
+          ctx.lineTo(0.620*canvas.width, 0.000*canvas.height);
+          ctx.lineTo(0.510*canvas.width, 0.000*canvas.height);
+          ctx.stroke();
+
+          // 1. Büro oben
+          ctx.beginPath();
+          ctx.moveTo(0.400*canvas.width, 0.000*canvas.height);
+          ctx.lineTo(0.400*canvas.width, 0.350*canvas.height);
+          ctx.lineTo(0.510*canvas.width, 0.350*canvas.height);
+          ctx.lineTo(0.510*canvas.width, 0.000*canvas.height);
+          ctx.lineTo(0.400*canvas.width, 0.000*canvas.height);
+          ctx.stroke();
+
+          // Großer Raum
+          ctx.beginPath();
+          ctx.moveTo(0.000*canvas.width, 0.150*canvas.height);
+          ctx.lineTo(0.000*canvas.width, 1.000*canvas.height);
+          ctx.lineTo(0.300*canvas.width, 1.000*canvas.height);
+          ctx.lineTo(0.300*canvas.width, 0.150*canvas.height);
+          ctx.lineTo(0.000*canvas.width, 0.150*canvas.height);
+          ctx.stroke();
+
+          // 1. Büro unten
+          ctx.beginPath();
+          ctx.moveTo(0.300*canvas.width, 0.650*canvas.height);
+          ctx.lineTo(0.300*canvas.width, 1.000*canvas.height);
+          ctx.lineTo(0.440*canvas.width, 1.000*canvas.height);
+          ctx.lineTo(0.440*canvas.width, 0.650*canvas.height);
+          ctx.lineTo(0.300*canvas.width, 0.650*canvas.height);
+          ctx.stroke();
+
+          // 2. Büro unten
+          ctx.beginPath();
+          ctx.moveTo(0.440*canvas.width, 0.650*canvas.height);
+          ctx.lineTo(0.440*canvas.width, 1.000*canvas.height);
+          ctx.lineTo(0.580*canvas.width, 1.000*canvas.height);
+          ctx.lineTo(0.580*canvas.width, 0.650*canvas.height);
+          ctx.lineTo(0.440*canvas.width, 0.650*canvas.height);
+          ctx.stroke();
+
+          // 3. Büro unten
+          ctx.beginPath();
+          ctx.moveTo(0.580*canvas.width, 0.650*canvas.height);
+          ctx.lineTo(0.580*canvas.width, 1.000*canvas.height);
+          ctx.lineTo(0.720*canvas.width, 1.000*canvas.height);
+          ctx.lineTo(0.720*canvas.width, 0.650*canvas.height);
+          ctx.lineTo(0.580*canvas.width, 0.650*canvas.height);
+          ctx.stroke();
+
+          // 4. Büro unten
+          ctx.beginPath();
+          ctx.moveTo(0.720*canvas.width, 0.650*canvas.height);
+          ctx.lineTo(0.720*canvas.width, 1.000*canvas.height);
+          ctx.lineTo(0.860*canvas.width, 1.000*canvas.height);
+          ctx.lineTo(0.860*canvas.width, 0.650*canvas.height);
+          ctx.lineTo(0.720*canvas.width, 0.650*canvas.height);
+          ctx.stroke();
+
+          // 5. Büro unten
+          ctx.beginPath();
+          ctx.moveTo(0.860*canvas.width, 0.650*canvas.height);
+          ctx.lineTo(0.860*canvas.width, 1.000*canvas.height);
+          ctx.lineTo(1.000*canvas.width, 1.000*canvas.height);
+          ctx.lineTo(1.000*canvas.width, 0.650*canvas.height);
+          ctx.lineTo(0.860*canvas.width, 0.650*canvas.height);
+          ctx.stroke();
+        }
+      }
+    </script>
+
+	</head>
+	<body onload="doit();">
+    <canvas id="roomplan" width="1000" height="500" style="border: 1px solid blue;">Nicht unterstützt.</canvas>
+    <p id="log"></p>
+
+    <script>
+        function draw_circle(centerX, centerY, radius, color) {
+            var canvas = document.getElementById('roomplan');
+            var ctx = canvas.getContext("2d");
+            ctx.beginPath();
+            ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
+            ctx.fillStyle=color;
+            ctx.fill();
+        }
+        function alert_in_room(room) {
+            var canvas = document.getElementById('roomplan');
+            if (room == "1") {
+                centerX = 0.150 * canvas.width;
+                centerY = 0.600 * canvas.height;
+                draw_circle(centerX, centerY, 50, 'red');
+            };
+            if (room == "2") {
+                centerX = 0.370 * canvas.width;
+                centerY = 0.820 * canvas.height;
+                draw_circle(centerX, centerY, 50, 'red');
+            };
+            if (room == "3") {
+                centerX = 0.510 * canvas.width;
+                centerY = 0.820 * canvas.height;
+                draw_circle(centerX, centerY, 50, 'red');
+            };
+            if (room == "4") {
+                centerX = 0.650 * canvas.width;
+                centerY = 0.820 * canvas.height;
+                draw_circle(centerX, centerY, 50, 'red');
+            };
+            if (room == "5") {
+                centerX = 0.790 * canvas.width;
+                centerY = 0.820 * canvas.height;
+                draw_circle(centerX, centerY, 50, 'red');
+            };
+            if (room == "6") {
+                centerX = 0.930 * canvas.width;
+                centerY = 0.820 * canvas.height;
+                draw_circle(centerX, centerY, 50, 'red');
+            };
+
+        };
+
+        function normal_in_room(room) {
+            var canvas = document.getElementById('roomplan');
+            if (room == "1") {
+                centerX = 0.150 * canvas.width;
+                centerY = 0.600 * canvas.height;
+                draw_circle(centerX, centerY, 51, 'white');
+            };
+            if (room == "2") {
+                centerX = 0.370 * canvas.width;
+                centerY = 0.820 * canvas.height;
+                draw_circle(centerX, centerY, 51, 'white');
+            };
+            if (room == "3") {
+                centerX = 0.510 * canvas.width;
+                centerY = 0.820 * canvas.height;
+                draw_circle(centerX, centerY, 51, 'white');
+            };
+            if (room == "4") {
+                centerX = 0.650 * canvas.width;
+                centerY = 0.820 * canvas.height;
+                draw_circle(centerX, centerY, 51, 'white');
+            };
+            if (room == "5") {
+                centerX = 0.790 * canvas.width;
+                centerY = 0.820 * canvas.height;
+                draw_circle(centerX, centerY, 51, 'white');
+            };
+            if (room == "6") {
+                centerX = 0.930 * canvas.width;
+                centerY = 0.820 * canvas.height;
+                draw_circle(centerX, centerY, 51, 'white');
+            };
+        }
+    </script>
+
+    <script>
+
+          function sse() {
+    var source = new EventSource('/stream');
+    var alert_division = document.getElementById('log');
+    source.onmessage = function(e) {
+        event = JSON.parse(e.data);
+        room = event.room;
+        state = event.state;
+        if (state != "OK")
+            alert_in_room(room);
+        else
+            normal_in_room(room);
+    };
+};
+
+sse();
+      </script>
+
+	</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Room configuration</title>
+</head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<body>
+    <input type = "text" id="ssid">
+    <input type="text" id="room">
+    <button onClick = "send_data()"> Save </button>
+    <script>
+        function send_data() {
+            alert('ahaha');
+                var sensor_id = document.getElementById('ssid').value;
+                var room = document.getElementById('room').value;
+
+                var data = {
+                    "sensor_id" : sensor_id,
+                    "room" : room
+                };
+
+                $.ajax({
+                    url: '/api/config/room',
+                    type: 'POST',
+                    contentType: 'application/json; charset=utf-8',
+                    data: JSON.stringify(data),
+                    dataType: "json"
+                });
+        }
+    </script>
+</body>
+</html>
